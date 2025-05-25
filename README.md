@@ -1,5 +1,7 @@
 ## EX. NO: 1 : IMPLEMENTATION OF CAESAR CIPHER
- 
+
+## Name : GANESH D
+## RegNo: 212223240035
 
 ## AIM:
 
@@ -27,8 +29,59 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+## PROGRAM :-
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    char message[100]; // Array to store the message
+    int key;
+
+    printf("Enter the message to encrypt: ");
+    fgets(message, sizeof(message), stdin); // Read input from the user
+
+    // Remove trailing newline from fgets
+    message[strcspn(message, "\n")] = '\0';
+
+    printf("Enter the Caesar Cipher key (an integer): ");
+    scanf("%d", &key); // Read the key from the user
+
+    // Encryption logic (directly in main)
+    for (int i = 0; message[i] != '\0'; i++) {
+        char c = message[i];
+
+        if (c >= 'A' && c <= 'Z') {
+            message[i] = ((c - 'A' + key) % 26 + 26) % 26 + 'A';
+        } else if (c >= 'a' && c <= 'z') {
+            message[i] = ((c - 'a' + key) % 26 + 26) % 26 + 'a';
+        }
+    }
+
+    printf("Encrypted Message: %s\n", message);
+
+    // Decryption logic (directly in main)
+    for (int i = 0; message[i] != '\0'; i++) {
+        char c = message[i];
+
+        if (c >= 'A' && c <= 'Z') {
+            message[i] = ((c - 'A' - key) % 26 + 26) % 26 + 'A';
+        } else if (c >= 'a' && c <= 'z') {
+            message[i] = ((c - 'a' - key) % 26 + 26) % 26 + 'a';
+        }
+    }
+
+    printf("Decrypted Message: %s\n", message);
+
+    return 0;
+}
+```
 
 
+## OUTPUT :-
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/51ecbeca-52ad-4adc-8576-c06231605d7a" />
 
-OUTPUT :-
+## RESULT:
+The program is executed successfully
